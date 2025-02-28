@@ -5,8 +5,6 @@
 #include "student.h"
 
 void testStudent();
-
-
 void testDate();
 void testAddress();
 
