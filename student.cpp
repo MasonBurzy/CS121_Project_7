@@ -47,7 +47,7 @@ void Student::init(std::string studentString) {
     creditHours = credits;
 }
 
-void Student::printStudent() {
+void Student::printStudent() const {
     std::cout << firstName << " " << lastName << std::endl;
     address->printAddress();
     std::cout << "DOB: ";
@@ -57,10 +57,10 @@ void Student::printStudent() {
     std::cout << "Credits: " << creditHours << std::endl;
 }
 
-std::string Student::getLastFirst() {
+std::string Student::getLastFirst() const {
     return lastName + ", " + firstName;
 }
 
-std::string Student::getLastName() {
+std::string Student::getLastName() const {
     return lastName;
 }

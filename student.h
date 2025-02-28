@@ -21,9 +21,9 @@ class Student {
                 ~Student();
 
                 void init(std::string studentString);
-                void printStudent();
-                std::string getLastFirst();
-                std::string getLastName();
+                void printStudent() const;
+                std::string getLastFirst() const;
+                std::string getLastName() const;
 
 };
 

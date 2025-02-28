@@ -4,14 +4,17 @@
 #include <vector>
 #include "student.h"
 
+/*
 void testAddress();
 void testDate();
 void testStudent();
-void loadStudents();
-void printStudents();
-void showStudentNames();
-void findStudent();
-void delStudents();
+*/
+
+void loadStudents(std::vector<Student*>& students);
+void printStudents(const std::vector<Student*>& students);
+void showStudentNames(const std::vector<Student*>& students);
+void findStudent(const std::vector<Student*>& students);
+void delStudents(std::vector<Student*>& students);
 std::string menu();
 
 
@@ -19,7 +22,7 @@ int main(){
 	std::vector<Student*> students;
 	loadStudents(students);
 	std::string choice;
-	while (truee) {
+	while (true) {
 		choice = menu();
 		if (choice == "0") break;
 		else if (choice == "1") showStudentNames(students);
@@ -39,20 +42,26 @@ int main(){
         testDate();
         testStudent();
         return 0;
-*/
+
 } // end main
+*/
+
 
 void loadStudents(std::vector<Student*>& students) {
-	for (const Student* student : students) {
-		student->printStudent();
-		std::cout << "------------------------\n";
+	std::ifstream file("data.csv");
+	std::string line;
+	while (std::getline(file, line)) {
+		students.push_back(new Student(line));
 	}
+
+	file.close();
 
 } // end loadStudent
 
 void printStudents(const std::vector<Student*>& students) {
 	for (const Student* student : students) {
-		std::cout << student->getLastFirst() << std::endl;
+		student->printStudent();
+		std::cout << "------------------------\n";
 	}
 
 } // end printStudents
@@ -70,7 +79,7 @@ void findStudent(const std::vector<Student*>& students) {
 	std::cin >> lastName;
 
 	bool found = false;
-	for (const Student* student : students:) {
+	for (const Student* student : students) {
 		if (student->getLastName().find(lastName) != std::string::npos) {
 			student->printStudent();
 			std::cout << "------------------------\n";
@@ -101,32 +110,3 @@ std::string menu() {
 
 } // end menu
 
-
-/*
-
-void testAddress(){
-        Address a;
-        a.init("123 W Main St", "Muncie", "IN", "47303");
-        a.printAddress();
-
-} // end testAddress
-
-
-void testDate(){
-        Date d;
-        d.init("01/27/1997");
-        d.printDate();
-
-} // end testDate
-
-
-void testStudent(){
-        std::string studentString = "Danielle,Johnson,32181 Johnson Course Apt. 389,New Jamesside,IN,59379,02/17/2004,05/15/2027,65";
-        Student* student = new Student();
-        student->init(studentString);
-        student->printStudent();
-        std::cout << std::endl;
-        std::cout << student->getLastFirst();
-        delete student;
-
-} // end testStudent

@@ -55,3 +55,10 @@ public:
         string getLastFirst()
 
 ```
+
+#main.cpp
+```
+delete testAddress, testDate, and testStudent
+
+
+```
